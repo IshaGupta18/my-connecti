@@ -1,0 +1,34 @@
+body{
+ 	margin: 0px;
+
+ 	#common-header{
+ 		display: flex;
+ 		justify-content: space-around;
+ 		box-shadow: 1px 1px 1px 1px lightgrey;
+ 		height: 80px;
+ 		background-image: "bgheader.jpg"
+
+ 		.logo{
+ 			margin-top: 30
+ 			width: 40%;
+ 			text-align: left;
+ 			margin-bottom: 30px;
+
+ 		}
+
+ 		.auth-info-links{
+ 			width: 40%;
+ 			text-align: right;
+ 			display: flex;
+ 			justify-content: flex-end;
+ 			al
+ 			p:first-child{
+ 				margin-right: 15px;
+ 			}
+
+
+
+
+ 		}
+ 	}
+ }

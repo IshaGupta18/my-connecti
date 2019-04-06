@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Connecti</title>
+
+
+
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  	<div id="common-header">
+  		<div class="logo">
+  			<img width="40px" src="https://blog.zoho.com/wp-content/uploads/2017/05/zoho-connect-logo-new.png">
+  		</div>
+      <div class="heading">
+        <p> connecti </p>
+      </div>
+  		<div class="auth-info-links">
+  			<% if user_signed_in? %>
+  			<p id="current_user_email"> <%= current_user.email %> </p>
+  			<p> <%= link_to "Sign Out", destroy_user_session_path, method: :delete %> </p>
+        <p> <%= link_to "Profile", user_profile_path(current_user.id) %> </p>
+  			<% else %>
+  			<p> <%= link_to "Sign In", new_user_session_path %> </p>
+  			<p> <%= link_to "Sign Up", new_user_registration_path %> </p>
+  			<% end %>
+
+  		</div>
+  	</div>
+    <%= yield %>
+     <% if user_signed_in? %>
+      <div id="user-chat-box">
+        <ul id="chat-messages-list">
+          <li class="other-message">
+            <span>Other Message</span>
+          </li>
+          <li class="self-message">
+            <span>
+              Self Message
+            </span>
+            
+          </li>
+
+        </ul>
+        <div id="chat-message-input-container">
+          <input id="chat-message-input" placeholder="Type message here">
+          <button id="send-message"><i class="fa fa-thumbs-up"></i></button>
+        </div>
+
+      </div>
+    <% end %>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"> </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
+  </body>
+</html>

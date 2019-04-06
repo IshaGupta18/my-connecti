@@ -1,0 +1,31 @@
+<li class="listelement" id="post-<%= post.id %>">
+	<div>
+		<p class="username"><%= post.user.email %></p>
+		<p class="contentpost"><%= post.content %></p>
+		
+		<% if user_signed_in? && post.user_id ==  current_user.id %>
+		<p><%= link_to "Delete", destroy_post_path(post.id), class: :"dele", method: :delete, remote: true %></p>
+		<% end %>
+
+		<% if user_signed_in? %>
+		<p>
+			<sub>
+				<%= post.likes.length %>
+				&nbsp
+				<%= link_to post.like_status_string(current_user.id), toggle_like_path(post.id), class: :"like", method: :post %>
+			</sub>
+		</p>
+		<% else %>
+		<sub>
+				<%= post.likes.length %> Likes
+		
+			</sub>
+
+		<% end %>
+
+		<div>
+			<%= render 'comments/post_comment', post: post %>
+		</div>
+		
+	</div>
+</li>

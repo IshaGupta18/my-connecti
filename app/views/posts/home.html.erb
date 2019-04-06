@@ -1,0 +1,40 @@
+<main id="posts-home">
+	<div class="side1"> Group links </div>
+	<div class="deewar-posts">
+		<div>
+		<% if user_signed_in? %>
+		<%= form_for @post, remote:true, :html => {:class => 'postform'} do |f| %>
+			
+			<%= f.text_area :content, placeholder: "Write something...", class: "textarea", rows: "5", cols: "65" %>
+			<div class="submitpost">
+			<%= f.submit %>
+			</div>
+		<% end %>
+		<% end %>
+		</div>
+		<div> 
+			<ul id="posts-list">
+				<% @posts.reverse.each do |po| %>
+				<%= render 'post', post: po %>
+				
+				<% end %>
+			</ul>
+	</div>
+	</div>
+	<div class="side2"> 
+		<h4> Friends </h4>
+		<% if user_signed_in? %>
+		<% @users.each do |user| %>
+			<% if user_signed_in? && user.email!=current_user.email %>
+			<p> <%= user.email %> 
+				<%= link_to "Add Friend", friendships_path(:friend_id => user), :method => :post %>  
+				<!-- friendships_path(:friend_id => user), :method => :post  -->
+			</p>
+		<% end %>
+		<% end %>	
+		<% end %>
+
+
+	 </div>
+
+</main>
