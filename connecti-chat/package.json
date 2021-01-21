@@ -9,6 +9,6 @@
   "author": "ishagupta",
   "license": "ISC",
   "dependencies": {
-    "socket.io": "^2.1.1"
+    "socket.io": "^2.4.0"
   }
 }
